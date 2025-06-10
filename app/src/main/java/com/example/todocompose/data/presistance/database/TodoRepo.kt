@@ -2,12 +2,14 @@ package com.example.todocompose.data.presistance.database
 
 import com.example.todocompose.data.models.Priority
 import com.example.todocompose.data.models.TodoTask
+import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
+@ViewModelScoped
 class TodoRepo @Inject constructor(
     private val todoDao: TodoDao
 ) {
-    fun getAllTasks() = todoDao.getAllTasks()
+    val getAllTasks = todoDao.getAllTasks()
 
     fun getSelectedTask(taskId: Int) = todoDao.getSelectedTask(taskId)
 
