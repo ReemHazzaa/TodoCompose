@@ -1,4 +1,4 @@
-package com.example.todocompose.data
+package com.example.todocompose.data.presistance.database
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -18,7 +18,7 @@ interface TodoDao {
     @Query("SELECT * FROM todo_table WHERE id=:taskId")
     fun getSelectedTask(taskId: Int): Flow<TodoTask>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.Companion.IGNORE)
     suspend fun addTask(task: TodoTask)
 
     @Query("UPDATE todo_table SET title = :title, description = :description, priority = :priority WHERE id = :taskId")
